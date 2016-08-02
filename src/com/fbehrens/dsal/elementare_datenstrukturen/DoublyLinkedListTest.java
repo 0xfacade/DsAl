@@ -103,5 +103,49 @@ public class DoublyLinkedListTest {
 		assertEquals(false, list.contains(-1));
 	}
 	
+	@Test
+	public void accessListEnds(){
+		DoublyLinkedList<String> strings = new DoublyLinkedList<>();
+		assertNull(strings.firstElement());
+		assertNull(strings.lastElement());
+		assertNull(strings.pop());
+		assertNull(strings.dequeue());
+		strings.append("Anfang");
+		assertEquals("Anfang", strings.firstElement());
+		assertEquals("Anfang", strings.lastElement());
+		assertEquals("Anfang", strings.pop());
+		assertEquals(false, strings.contains("Anfang"));
+		strings.append("Anfang");
+		assertEquals("Anfang", strings.dequeue());
+		assertNull(strings.dequeue());
+		strings.append("Anfang");
+		strings.append("Ende");
+		assertEquals("Anfang", strings.firstElement());
+		assertEquals("Ende", strings.lastElement());
+		assertEquals("Anfang", strings.pop());
+		strings.prepend("Anfang");
+		assertEquals("Ende", strings.dequeue());
+		strings.pop();
+		strings.pop();
+		strings.dequeue();
+		DoublyLinkedList<Integer> ints = new DoublyLinkedList<>();
+		for(int i = 0; i < 1024; i++){
+			ints.prepend(i);
+		}
+		for(int i = 1023; i >= 0; i--){
+			if(ints.pop() != i){
+				fail("Pop was not in the right order");
+			}
+		}
+		for(int i = 0; i < 655; i++){
+			ints.prepend(i);
+		}
+		for(int i = 0; i < 655; i++){
+			if(ints.dequeue() != i){
+				fail("Dequeue was not in the right order!");
+			}
+		}
+	}
+	
 
 }

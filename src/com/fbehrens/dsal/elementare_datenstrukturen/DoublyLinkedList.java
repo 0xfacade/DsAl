@@ -3,14 +3,19 @@ package com.fbehrens.dsal.elementare_datenstrukturen;
 import java.util.Iterator;
 
 /**
- * A doubly linked list uses nodes to store its values. Every node
- * holds a value and a link to the previous and next nodes.
- * This particular implementation always has a head node with a value of null,
- * even when the list is actually empty. A lot of special cases
- * do not have to be taken care of when accessing the head, therefore.
+ * A doubly linked list offers efficient implementations for accessing
+ * the beginning AND the end of the list. Also, the predecessor and the
+ * successor of any given node can be accessed in constant time.
+ * The list achieves this by storing a link to not only the successor,
+ * but also the predecessor in every node. If the list is implemented
+ * with an empty head, this means that the head always has a link to
+ * the first and the last element of the list. Implementing the list
+ * with an empty head that is there even if the list is empty has more
+ * advantages - deleting and inserting do not need to check for nulls
+ * when accessing the head or inserting elements.
  * 
  * Runtimes:
- * 	- append/prepend: O(1)
+ * 	- append/prepend/pop/dequeue: O(1)
  *  - contains/delete: O(n)
  *  - equals/toString: O(n)
  */
@@ -51,12 +56,7 @@ public class DoublyLinkedList<VALUE> implements AbstractList<VALUE>{
 		this.head.previous.append(appendMe);
 	}
 	
-	/**
-	 * Inserts the value at the beginning of the list.
-	 * This method is special to {@link DoublyLinkedList}:
-	 * usually, lists do not have this feature because
-	 * it cannot be efficiently implemented.
-	 */
+	@Override
 	public void prepend(VALUE value){
 		Node<VALUE> prependMe = new Node<>(value);
 		this.head.append(prependMe);
@@ -73,6 +73,30 @@ public class DoublyLinkedList<VALUE> implements AbstractList<VALUE>{
 	@Override
 	public boolean contains(VALUE toFind) {
 		return findFirstNodeWithValue(toFind) != null;
+	}
+	
+	@Override
+	public VALUE firstElement(){
+		return head.next.value;
+	}
+	
+	@Override
+	public VALUE lastElement(){
+		return head.previous.value;
+	}
+	
+	@Override
+	public VALUE pop(){
+		VALUE toReturn = head.next.value;
+		head.next.delete();
+		return toReturn;
+	}
+	
+	@Override
+	public VALUE dequeue(){
+		VALUE toReturn = head.previous.value;
+		head.previous.delete();
+		return toReturn;
 	}
 	
 	private Node<VALUE> findFirstNodeWithValue(VALUE toFind){
