@@ -8,6 +8,11 @@ import java.util.Iterator;
  * This particular implementation always has a head node with a value of null,
  * even when the list is actually empty. A lot of special cases
  * do not have to be taken care of when accessing the head, therefore.
+ * 
+ * Runtimes:
+ * 	- append/prepend: O(1)
+ *  - contains/delete: O(n)
+ *  - equals/toString: O(n)
  */
 public class DoublyLinkedList<VALUE> implements AbstractList<VALUE>{
 	
