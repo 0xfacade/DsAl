@@ -1,4 +1,4 @@
-package com.fbehrens.dsal.elementare_datenstrukturen;
+package com.fbehrens.dsal.lists;
 
 /**
  * All lists that we are going to compare will have to implement this interface
@@ -21,6 +21,20 @@ public interface AbstractList<VALUE> extends Iterable<VALUE> {
 	 * Prepends the supplied value at the beginning of the list.
 	 */
 	public void prepend(VALUE value);
+	
+	default public VALUE get(int index){
+		if(index < 0 || index >= size()){
+			throw new IndexOutOfBoundsException();
+		}
+		int i = 0;
+		for(VALUE value : this){
+			if(i == index){
+				return value;
+			}
+			i++;
+		}
+		return null;
+	}
 	
 	/**
 	 * Deletes one occurrence of the supplied value from the list.
@@ -51,4 +65,16 @@ public interface AbstractList<VALUE> extends Iterable<VALUE> {
 	 * Removes the last element from the list and returns it.
 	 */
 	public VALUE dequeue();
+	
+	/**
+	 * Returns the number of elements in this list.
+	 */
+	public int size();
+	
+	/**
+	 * Returns true if and only if the list is empty.
+	 */
+	default public boolean isEmpty(){
+		return size() == 0;
+	}
 }

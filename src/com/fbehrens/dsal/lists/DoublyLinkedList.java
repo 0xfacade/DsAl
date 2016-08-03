@@ -1,4 +1,4 @@
-package com.fbehrens.dsal.elementare_datenstrukturen;
+package com.fbehrens.dsal.lists;
 
 import java.util.Iterator;
 
@@ -43,30 +43,35 @@ public class DoublyLinkedList<VALUE> implements AbstractList<VALUE>{
 	}
 	
 	private final Node<VALUE> head;
+	private int size;
 	
 	public DoublyLinkedList(){
 		this.head = new Node<VALUE>(null);
 		this.head.next = this.head;
 		this.head.previous = this.head;
+		this.size = 0;
 	}
 	
 	@Override
 	public void append(VALUE value){
 		Node<VALUE> appendMe = new Node<>(value);
 		this.head.previous.append(appendMe);
+		this.size++;
 	}
 	
 	@Override
 	public void prepend(VALUE value){
 		Node<VALUE> prependMe = new Node<>(value);
 		this.head.append(prependMe);
+		this.size++;
 	}
 	
 	@Override
 	public void delete(VALUE valueToDelete){
 		Node<VALUE> nodeToDelete = findFirstNodeWithValue(valueToDelete);
-		if(nodeToDelete != null){
+		if(nodeToDelete != null && nodeToDelete != this.head){
 			nodeToDelete.delete();
+			this.size--;
 		}
 	}
 	
@@ -88,6 +93,9 @@ public class DoublyLinkedList<VALUE> implements AbstractList<VALUE>{
 	@Override
 	public VALUE pop(){
 		VALUE toReturn = head.next.value;
+		if(head.next != head){
+			size--;
+		}
 		head.next.delete();
 		return toReturn;
 	}
@@ -95,8 +103,16 @@ public class DoublyLinkedList<VALUE> implements AbstractList<VALUE>{
 	@Override
 	public VALUE dequeue(){
 		VALUE toReturn = head.previous.value;
+		if(head.previous != head){
+			size--;
+		}
 		head.previous.delete();
 		return toReturn;
+	}
+	
+	@Override
+	public int size() {
+		return this.size;
 	}
 	
 	private Node<VALUE> findFirstNodeWithValue(VALUE toFind){

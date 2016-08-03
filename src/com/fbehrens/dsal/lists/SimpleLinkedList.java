@@ -1,4 +1,4 @@
-package com.fbehrens.dsal.elementare_datenstrukturen;
+package com.fbehrens.dsal.lists;
 
 import java.util.Iterator;
 
@@ -13,9 +13,11 @@ public class SimpleLinkedList<VALUE> implements AbstractList<VALUE> {
 	}
 	
 	private final Node<VALUE> head;
+	private int size;
 	
 	public SimpleLinkedList(){
 		this.head = new Node<VALUE>(null);
+		this.size = 0;
 	}
 
 	@Override
@@ -50,6 +52,7 @@ public class SimpleLinkedList<VALUE> implements AbstractList<VALUE> {
 			lastNode = lastNode.next;
 		}
 		lastNode.next = new Node(value);
+		this.size++;
 	}
 
 	@Override
@@ -57,6 +60,7 @@ public class SimpleLinkedList<VALUE> implements AbstractList<VALUE> {
 		Node<VALUE> newNode = new Node(value);
 		newNode.next = head.next;
 		head.next = newNode;
+		this.size++;
 	}
 
 	@Override
@@ -64,6 +68,7 @@ public class SimpleLinkedList<VALUE> implements AbstractList<VALUE> {
 		Node<VALUE> nodeBefore = findNodeJustBeforeValue(value);
 		if(nodeBefore != null){
 			nodeBefore.next = nodeBefore.next.next;
+			this.size--;
 		}
 	}
 
@@ -109,6 +114,7 @@ public class SimpleLinkedList<VALUE> implements AbstractList<VALUE> {
 		if(head.next != null){
 			VALUE toReturn = head.next.value;
 			head.next = head.next.next;
+			this.size--;
 			return toReturn;
 		} else {
 			return null;
@@ -124,10 +130,16 @@ public class SimpleLinkedList<VALUE> implements AbstractList<VALUE> {
 				last = last.next;
 			}
 			prevLast.next = null;
+			this.size--;
 			return last.value;
 		} else {
 			return null;
 		}
+	}
+	
+	@Override
+	public int size() {
+		return this.size;
 	}
 	
 	@Override
@@ -161,6 +173,5 @@ public class SimpleLinkedList<VALUE> implements AbstractList<VALUE> {
 			result = result.substring(0, result.length()-1);
 		}
 		return result + "]";
-	}
-	
+	}	
 }

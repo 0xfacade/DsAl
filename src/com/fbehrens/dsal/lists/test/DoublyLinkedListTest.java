@@ -1,14 +1,18 @@
-package com.fbehrens.dsal.elementare_datenstrukturen;
+package com.fbehrens.dsal.lists.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 
-public class SimpleLinkedListTest {
+import com.fbehrens.dsal.lists.DoublyLinkedList;
+
+public class DoublyLinkedListTest {
 
 	@Test
 	public void stringRep(){
-		SimpleLinkedList<Integer> list = new SimpleLinkedList<>();
+		DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
 		assertEquals("[]", list.toString());
 		for(int i = 0; i < 5; i++){
 			list.append(i);
@@ -18,7 +22,7 @@ public class SimpleLinkedListTest {
 	
 	@Test
 	public void equality() {
-		SimpleLinkedList<Integer> one = new SimpleLinkedList<>(), two = new SimpleLinkedList<>();
+		DoublyLinkedList<Integer> one = new DoublyLinkedList<>(), two = new DoublyLinkedList<>();
 		assertNotEquals(one, "A random object");
 		for(int i = 0; i < 5; i++){
 			one.append(i);
@@ -34,11 +38,11 @@ public class SimpleLinkedListTest {
 	@Test
 	public void insertion(){
 		// test whether appending to an empty list is the same as prepending in reverse order
-		SimpleLinkedList<Character> charsOne = new SimpleLinkedList<>();
+		DoublyLinkedList<Character> charsOne = new DoublyLinkedList<>();
 		for(char c = 'a'; c <= 'z'; c++){
 			charsOne.append(c);
 		}
-		SimpleLinkedList<Character> charsTwo = new SimpleLinkedList<>();
+		DoublyLinkedList<Character> charsTwo = new DoublyLinkedList<>();
 		for(char c = 'z'; c >= 'a'; c--){
 			charsTwo.prepend(c);
 		}
@@ -53,7 +57,7 @@ public class SimpleLinkedListTest {
 	@Test
 	public void retrieval(){
 		// insert the numbers 0 to 1023 and then check whether they are stored in that oreder
-		SimpleLinkedList<Integer> ints = new SimpleLinkedList<>();
+		DoublyLinkedList<Integer> ints = new DoublyLinkedList<>();
 		for(int i = 0; i < 1024; i++){
 			ints.append(i);
 		}
@@ -71,7 +75,7 @@ public class SimpleLinkedListTest {
 	
 	@Test
 	public void deletion(){
-		SimpleLinkedList<String> strings = new SimpleLinkedList<>();
+		DoublyLinkedList<String> strings = new DoublyLinkedList<>();
 		strings.delete("this should do nothing");
 		for(char c = 'a'; c <= 'z'; c++){
 			strings.append(c + "");
@@ -79,7 +83,7 @@ public class SimpleLinkedListTest {
 		for(String c : new String[]{"f","l","o","r","i","a","n"}){
 			strings.delete(c);
 		}
-		SimpleLinkedList<String> stringsTwo = new SimpleLinkedList<>();
+		DoublyLinkedList<String> stringsTwo = new DoublyLinkedList<>();
 		for(char c = 'a'; c <= 'z'; c++){
 			if(c != 'f' && c != 'l' && c != 'o' && c != 'r' && c != 'i' && c != 'a' && c != 'n'){
 				stringsTwo.append(c + "");
@@ -90,7 +94,7 @@ public class SimpleLinkedListTest {
 	
 	@Test
 	public void contains(){
-		SimpleLinkedList<Integer> list = new SimpleLinkedList<>();
+		DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
 		for(int i = 0; i < 1024; i++){
 			list.prepend(i);
 		}
@@ -103,7 +107,7 @@ public class SimpleLinkedListTest {
 	
 	@Test
 	public void accessListEnds(){
-		SimpleLinkedList<String> strings = new SimpleLinkedList<>();
+		DoublyLinkedList<String> strings = new DoublyLinkedList<>();
 		assertNull(strings.firstElement());
 		assertNull(strings.lastElement());
 		assertNull(strings.pop());
@@ -126,7 +130,7 @@ public class SimpleLinkedListTest {
 		strings.pop();
 		strings.pop();
 		strings.dequeue();
-		SimpleLinkedList<Integer> ints = new SimpleLinkedList<>();
+		DoublyLinkedList<Integer> ints = new DoublyLinkedList<>();
 		for(int i = 0; i < 1024; i++){
 			ints.prepend(i);
 		}
@@ -144,5 +148,53 @@ public class SimpleLinkedListTest {
 			}
 		}
 	}
+	
+	@Test
+	public void size(){
+		DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
+		assertEquals(0, list.size());
+		for(int i = 1; i < 1024; i++){
+			list.append(i);
+			assertEquals(i, list.size());
+		}
+		int i = 0;
+		while(!list.isEmpty()){
+			if(i % 4 == 0){
+				list.pop();
+			} else if (i % 4 == 1){
+				list.dequeue();
+			} else if (i % 4 == 2){
+				list.delete(list.firstElement());
+			} else if (i % 4 == 3){
+				list.delete(list.lastElement());
+			}
+			i++;
+		}
+		assertEquals(1023, i);
+		assertEquals(0, list.size());
+		list.delete(5);
+		list.delete(6);
+		assertEquals(0, list.size());
+		list.prepend(1);
+		assertEquals(1, list.size());
+	}
+	
+	@Test(expected=IndexOutOfBoundsException.class)
+	public void accessBadIndex(){
+		DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
+		list.get(0);
+	}
+	
+	@Test
+	public void randomAccess(){
+		DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
+		for(int i = 0; i < 1024; i++){
+			list.append(i);
+		}
+		for(int i = 1023; i >= 0; i--){
+			assertEquals((int) i, (int) list.get(i));
+		}
+	}
+	
 
 }
