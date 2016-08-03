@@ -1,5 +1,6 @@
 package com.fbehrens.dsal.trees;
 import com.fbehrens.dsal.*;
+import com.fbehrens.dsal.arrays.*;
 import java.util.Random;
 
 /**

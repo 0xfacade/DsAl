@@ -1,5 +1,6 @@
 package com.fbehrens.dsal.trees;
 import com.fbehrens.dsal.*;
+import com.fbehrens.dsal.arrays.*;
 /**
  * Traverses all elements of a searchtree in pre-order, in-order, or post-order.
  * (One needs linear time in nr of nodes to traverse all nodes,

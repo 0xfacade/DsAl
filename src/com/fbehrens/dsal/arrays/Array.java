@@ -1,6 +1,6 @@
-package com.fbehrens.dsal;
-
-import java.util.*;
+package com.fbehrens.dsal.arrays;
+import com.fbehrens.dsal.*;
+import java.util.Random;
 
 /**
  * An array is more convenient class of the built-in arrays. It can be used

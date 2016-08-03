@@ -1,5 +1,6 @@
 package com.fbehrens.dsal.lists;
 import com.fbehrens.dsal.*;
+import com.fbehrens.dsal.arrays.*;
 /**
  * An iterator to traverse the elements of a hashtable.
  * 

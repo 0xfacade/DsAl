@@ -1,5 +1,6 @@
 package com.fbehrens.dsal.lists;
 import com.fbehrens.dsal.*;
+import com.fbehrens.dsal.arrays.*;
 /**
  * A set is like a {@link Map} without data, i.e.
  * it is a collection of elements without duplicates.
