@@ -10,7 +10,30 @@ import com.fbehrens.dsal.lists.SimpleLinkedList;
 import com.fbehrens.dsal.lists.competition.ListAppendingAndPrepending;
 import com.fbehrens.dsal.lists.competition.ListAsStack;
 
+/**
+ * Compares the run times of competitors.
+ */
 public class RuntimeComparator {
+	
+	/*
+	 * If you want to compare the performance of two different algorithms / data structures,
+	 * create Competitors for each algorithm / data structure and add them to a CompetitorGroup.
+	 * The Competitors should do the same work in their run() methods. You can use the
+	 * Competitor.prepare() and Competitor.takeDown() methods to do work before and after
+	 * the timing.
+	 */
+	
+	public static void main(String[] args){
+		AbstractList<CompetitorGroup> groups = new SimpleLinkedList<>();
+		
+		// add groups of competitors here
+		groups.append(new ListAppendingAndPrepending());
+		groups.append(new ListAsStack());
+		
+		for(CompetitorGroup group : groups){
+			compare(group);
+		}
+	}
 	
 	public interface Competitor {
 		default String getName() {
@@ -31,16 +54,6 @@ public class RuntimeComparator {
 	private static class Result {
 		public long timing;
 		public Competitor competitor;
-	}
-	
-	public static void main(String[] args){
-		AbstractList<CompetitorGroup> groups = new SimpleLinkedList<>();
-		// List competitions
-		groups.append(new ListAppendingAndPrepending());
-		groups.append(new ListAsStack());
-		for(CompetitorGroup group : groups){
-			compare(group);
-		}
 	}
 	
 	private static void compare(CompetitorGroup group){
