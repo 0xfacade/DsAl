@@ -9,6 +9,7 @@ import com.fbehrens.dsal.lists.AbstractList;
 import com.fbehrens.dsal.lists.SimpleLinkedList;
 import com.fbehrens.dsal.lists.competition.ListAppendingAndPrepending;
 import com.fbehrens.dsal.lists.competition.ListAsStack;
+import com.fbehrens.dsal.sorting.competition.RandomSort;
 
 /**
  * Compares the run times of competitors.
@@ -29,6 +30,7 @@ public class RuntimeComparator {
 		// add groups of competitors here
 		groups.append(new ListAppendingAndPrepending());
 		groups.append(new ListAsStack());
+		groups.append(new RandomSort());
 		
 		for(CompetitorGroup group : groups){
 			compare(group);

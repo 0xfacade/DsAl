@@ -15,7 +15,7 @@ public class ListAsStack implements RuntimeComparator.CompetitorGroup {
 		Random r = new Random(seed);
 		int opCount = 0;
 		while(opCount < 100000000){
-			if(r.nextInt(5) % 5 == 0){
+			if(!list.isEmpty() && r.nextInt(5) % 5 == 0){
 				int remove = r.nextInt(list.size());
 				for(int i = 0; i < remove; i++){
 					list.pop();
