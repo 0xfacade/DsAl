@@ -203,7 +203,7 @@ void rehash() {
     /*
      * there only is a increase in size, if k is not already present
      */
-    if(!table.get(l).iselement(k)) size++;
+    if(!table.get(l).contains(k)) size++;
     /*
      * finally insert (or overwrite) the data for k.
      */
@@ -227,7 +227,7 @@ void rehash() {
      * first check whether the k is present in this table.
      * Otherwise, we can return without deletion.
      */
-    if(table.get(l)==null || !table.get(l).iselement(k)) return;
+    if(table.get(l)==null || !table.get(l).contains(k)) return;
     /*
      * perform the deletion
      */
@@ -266,14 +266,14 @@ void rehash() {
    * (amortized cost of O(1) when using a good hash-function)
    * @param k The key to look for.
    * @return true, if k is contained in this map, and false, otherwise.
-   * @see Map#iselement(Object) 
+   * @see Map#contains(Object) 
    */
-  public boolean iselement(K k) {
+  public boolean contains(K k) {
     int l = slot(k);
     /* 
      * just look for k in the list for key k. 
      */
-    return table.get(l)!=null && table.get(l).iselement(k);
+    return table.get(l)!=null && table.get(l).contains(k);
   }
 
   /**

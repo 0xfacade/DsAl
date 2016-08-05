@@ -175,7 +175,7 @@ public class Searchtree<K extends Comparable<K>,D>
    * @param k The key to look for, must be non-null.
    * @return true, iff k is contained in this tree.
    */
-  public boolean iselement(K k) {
+  public boolean contains(K k) {
     return root!=null && root.findsubtree(k)!=null;
   }
 

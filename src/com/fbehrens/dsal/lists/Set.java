@@ -45,7 +45,7 @@ public class Set<K> {
    * @param k The element to check.
    * @return true, if k is in the set, false, otherwise.
    */
-  public boolean iselement(K k) { return h.iselement(k); }
+  public boolean iselement(K k) { return h.contains(k); }
   /**
    * Gives an iterator over all elements in the set.
    */

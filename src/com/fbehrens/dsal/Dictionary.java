@@ -29,9 +29,9 @@ public abstract class Dictionary<K,D> implements Map<K,D> {
       return null;
   }
   /**
-   * Linear time implementation of {@link Map#iselement(Object)}.
+   * Linear time implementation of {@link Map#contains(Object)}.
    */
-  public boolean iselement(K k) {
+  public boolean contains(K k) {
       Iterator<K,D> it;
       for(it=iterator(); it.more(); it.step()) {
           if (it.key().equals(k)) {

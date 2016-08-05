@@ -227,9 +227,9 @@ Node insert_on_level(int i, Node m, Node n) {
    * (in O(log n) time in average).
    * @param k The key to look for.
    * @return true, iff the k is present in this skiplist.
-   * @see Map#iselement(Object) 
+   * @see Map#contains(Object) 
    */
-  public boolean iselement(K k) {
+  public boolean contains(K k) {
     /*
      * just use the findnode method
      */
@@ -248,7 +248,7 @@ public void delete(K k) {
   * if the key is not present in this list, then do nothing,
   * otherwise decrease size of this list and continue
   */
- if(iselement(k)) size--; else return;
+ if(contains(k)) size--; else return;
  /*
   * start traversing from head and from the highest level.
   * Then repeatedly delete on i-th level.

@@ -18,7 +18,7 @@ public class Splaytree<K extends Comparable<K>,D> extends Searchtree<K,D> {
     /*
      * then splay the newly created node to the root
      */
-    iselement(k);
+    contains(k);
   }
 
   /*
@@ -27,7 +27,7 @@ public class Splaytree<K extends Comparable<K>,D> extends Searchtree<K,D> {
    * is at the root after this call.
    * @see Searchtree#iselement(K k)
    */
-  public boolean iselement(K k) {
+  public boolean contains(K k) {
     if(root==null) return false;
     Searchtreenode<K,D> n=root, last=root;
     int c;
@@ -57,13 +57,13 @@ public class Splaytree<K extends Comparable<K>,D> extends Searchtree<K,D> {
      * Afterwards the node with the key will be the root if
      * it exists (see iselement).
      */
-    iselement(k);
+    contains(k);
     if(root!=null && root.key.equals(k)) return root.data;
     return null;
   }
 
   public void delete(K k) {
-    if(!iselement(k)) return;
+    if(!contains(k)) return;
     /* 
      * now we know that the node with key k is stored
      * in the root (see iselement).

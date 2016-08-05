@@ -43,7 +43,7 @@ public interface Map<K,D> {
      * @param k The key to look for.
      * @return true, if k is contained in this map, and false, otherwise. 
      */
-    public boolean iselement(K k);
+    public boolean contains(K k);
     /**
      * Returns the size of this map, i.e. the number
      * of keys, under which data is stored.
