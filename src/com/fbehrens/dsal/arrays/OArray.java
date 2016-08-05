@@ -1,6 +1,6 @@
 package com.fbehrens.dsal.arrays;
-import com.fbehrens.dsal.*;
-import com.fbehrens.dsal.lists.*;
+import com.fbehrens.dsal.Pair;
+import com.fbehrens.dsal.lists.Stack;
 /**
  * An (O)rdered array is like an array but there additional methods
  * to sort an array ({@link #quicksort()} and {@link #heapsort()}). 

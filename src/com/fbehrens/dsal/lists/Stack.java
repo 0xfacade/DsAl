@@ -1,5 +1,5 @@
 package com.fbehrens.dsal.lists;
-import com.fbehrens.dsal.*;
+
 /** 
  * A list-based implementation of a stack (LIFO-buffer)
  * with only constant time operations.

@@ -1,6 +1,8 @@
 package com.fbehrens.dsal.lists;
-import com.fbehrens.dsal.*;
-import com.fbehrens.dsal.arrays.*;
+import com.fbehrens.dsal.Dictionary;
+import com.fbehrens.dsal.Iterator;
+import com.fbehrens.dsal.Map;
+import com.fbehrens.dsal.arrays.Array;
 /**
  * An iterator to traverse the elements of a hashtable.
  * 

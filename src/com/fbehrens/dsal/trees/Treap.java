@@ -1,6 +1,7 @@
 package com.fbehrens.dsal.trees;
-import com.fbehrens.dsal.*;
 import java.util.Random;
+
+import com.fbehrens.dsal.Map;
 
 /**
  * A treapnode is like a {@link Searchtreenode} but additionally a weight is stored.

@@ -1,11 +1,15 @@
 package com.fbehrens.dsal.sorting.test;
 
-import com.fbehrens.dsal.sorting.SortingAlgorithm;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Random;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Random;
+import com.fbehrens.dsal.sorting.SortingAlgorithm;
 
 public abstract class SortingTest {
     private static Random random = new Random();

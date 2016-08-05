@@ -1,5 +1,5 @@
 package com.fbehrens.dsal.lists;
-import com.fbehrens.dsal.*;
+
 /**
  * A list-based implementation of a queue, i.e.
  * FIFO-buffer, where all methods need constant time.

@@ -1,5 +1,6 @@
 package com.fbehrens.dsal.lists;
-import com.fbehrens.dsal.*;
+import com.fbehrens.dsal.Dictionary;
+import com.fbehrens.dsal.Map;
 /**
  * A listnode stores a key of type K, a datum of type D, and 
  * links to a previous and a succeeding listnode.

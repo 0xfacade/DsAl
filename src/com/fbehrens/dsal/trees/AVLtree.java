@@ -1,5 +1,5 @@
 package com.fbehrens.dsal.trees;
-import com.fbehrens.dsal.*;
+import com.fbehrens.dsal.Map;
 /**
  * In an AVL treenode additional the height of the corresponding 
  * subtree is stored. (If it would have to be computed then the 

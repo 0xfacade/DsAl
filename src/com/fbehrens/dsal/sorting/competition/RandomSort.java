@@ -1,12 +1,12 @@
 package com.fbehrens.dsal.sorting.competition;
 
+import java.util.Random;
+
 import com.fbehrens.dsal.RuntimeComparator;
 import com.fbehrens.dsal.sorting.InsertionSort;
 import com.fbehrens.dsal.sorting.QuickSort;
 import com.fbehrens.dsal.sorting.SelectionSort;
 import com.fbehrens.dsal.sorting.SortingAlgorithm;
-
-import java.util.Random;
 
 public class RandomSort implements RuntimeComparator.CompetitorGroup {
     private static long seed = System.currentTimeMillis();

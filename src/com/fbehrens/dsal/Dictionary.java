@@ -1,5 +1,7 @@
 package com.fbehrens.dsal;
-import com.fbehrens.dsal.arrays.*;
+
+import com.fbehrens.dsal.arrays.Array;
+
 /**
  * A dictionary provides some default implementations of methods that are
  * required for the {@link Map}-interface. Only {@link Map#insert(Object, Object)},

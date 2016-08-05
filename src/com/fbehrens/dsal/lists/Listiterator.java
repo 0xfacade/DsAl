@@ -1,5 +1,6 @@
 package com.fbehrens.dsal.lists;
-import com.fbehrens.dsal.*;
+import com.fbehrens.dsal.Iterator;
+import com.fbehrens.dsal.Map;
 /**
  * An Listiterator allows all operations of an {@link Iterator}, and
  * additionally has operations to insert and delete entries at the

@@ -1,5 +1,5 @@
 package com.fbehrens.dsal.trees;
-import com.fbehrens.dsal.*;
+
 /**
  * An implementation of a Splaytree.
  * 

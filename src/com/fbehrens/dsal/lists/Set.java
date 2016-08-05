@@ -1,6 +1,7 @@
 package com.fbehrens.dsal.lists;
-import com.fbehrens.dsal.*;
-import com.fbehrens.dsal.arrays.*;
+import com.fbehrens.dsal.Map;
+import com.fbehrens.dsal.SimpleIterator;
+import com.fbehrens.dsal.arrays.Array;
 /**
  * A set is like a {@link Map} without data, i.e.
  * it is a collection of elements without duplicates.
