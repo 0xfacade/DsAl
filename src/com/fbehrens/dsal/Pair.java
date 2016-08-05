@@ -26,12 +26,12 @@ public class Pair<A,B> {
      * Setter for first value
      * @param a the new first value
      */
-    public void setfirst(A a) { this.a = a; }
+    public void setFirst(A a) { this.a = a; }
     /**
      * Setter for second value
      * @param b the new second value
      */
-    public void setsecond(B b) { this.b = b; }
+    public void setSecond(B b) { this.b = b; }
     /**
      * Selector of the first value
      * @return the first value of this pair

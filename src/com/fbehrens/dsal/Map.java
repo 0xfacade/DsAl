@@ -1,5 +1,7 @@
 package com.fbehrens.dsal;
-import com.fbehrens.dsal.arrays.*;
+
+import com.fbehrens.dsal.arrays.Array;
+
 /**
  * A Map is a data structure to store data under key
  * values, or just keys. For each key there can be at
